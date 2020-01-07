@@ -7,8 +7,6 @@
 extern "C"{
 #include <SDL.h>
 #include <SDL_image.h>
-#include <SDL_thread.h>
-#include <SDL_render.h>
 #undef main
 };
 
@@ -65,7 +63,7 @@ public:
 
 
 /*
-*	SDL基类对象
+*	SDL鍩虹被
 */
 class LJ_object
 {
@@ -107,7 +105,7 @@ public:
 
 
 /*
-*	视频面板对象
+*	瑙嗛闈㈡澘
 */
 class LJ_VideoPlane:public LJ_object{
 	FrameBuff **buff;
@@ -143,7 +141,7 @@ public:
 
 
 /*
-*	lable对象
+*	lable
 */
 class LJ_lable:public LJ_object{
 
