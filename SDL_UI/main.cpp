@@ -11,20 +11,18 @@ extern "C"{
 using namespace std;
 
 int main(){
-//	ShowWindow(GetForegroundWindow(),SW_HIDE);		//Òþ²Øcmd´°¿Ú
+//	ShowWindow(GetForegroundWindow(),SW_HIDE);		//éšè—cmdçª—å£
 
-	SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER);		//×¢²áSDL
+	SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER);		//æ³¨å†ŒSDL
 
-	LJ_Window win("XiaoLiang MediaPlayer",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1280,720);
+	LJ_Window win("XiaoLiang MediaPlayer",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1280,720);  //åˆ›å»ºwinå¯¹è±¡
 
- 	LJ_VideoPlane videoPlane(&win,0,0,0,0);
+ 	LJ_VideoPlane videoPlane(&win,0,0,0,0);        //åˆ›å»ºè§†é¢‘é¢æ¿
 
 // 	LJ_lable list(&win,0,0,50,50);
 //  	list.setPic("list.bmp");
 
-	win = win + videoPlane /*+ list*/;
-
-	videoPlane.openMedia("F:\\movie\\ÐÐÊ¬×ßÈâ.The.Walking.Dead.S10E02.720p-ÌìÌì×ÖÄ»×é.mp4");
+	win = win + videoPlane /*+ list*/;     //å°†videoPlaneæ”¾ç½®åˆ°winä¸­
 
 	SDL_Event event;
 
@@ -33,16 +31,16 @@ int main(){
 
 		switch(event.type){
 
-		case SDL_MOUSEMOTION:	//Êó±êÒÆ¶¯
+		case SDL_MOUSEMOTION:	//é¼ æ ‡ç§»åŠ¨
 			break;
 
-		case SDL_MOUSEBUTTONUP:	//Êó±êµã»÷
-// 			for(auto it = win.getObjs().begin();it != win.getObjs().end();it++)
+		case SDL_MOUSEBUTTONUP:	//é¼ æ ‡ç‚¹å‡»
+// 			for(auto it = win.getObjs().end()-1;it >= win.getObjs().begin();it--)		//ä»ŽåŽå‘å‰æœç´¢åˆ°ç¬¬ä¸€ä¸ªç‚¹å‡»åˆ°çš„å¯¹è±¡ï¼Œå¯¹è±¡è¶Šåœ¨åŽé¢ï¼Œåˆ™åœ¨çª—ä½“ä¸­è¶Šåœ¨è¡¨é¢
 // 				if((*it)->isIn(event.motion.x,event.motion.y))
-// 					cout<<"µã»÷µ½ÁË"<<endl;
+// 					cout<<"ç‚¹å‡»åˆ°äº†"<<endl;
 			break;
 
-		case SDL_KEYUP:			//¼üÅÌ
+		case SDL_KEYUP:			//é”®ç›˜
 												switch(event.key.keysym.sym){
 												case SDLK_UP:
 												//	videoPlane.setFps(videoPlane.getFps().num * 2,videoPlane.getFps().den);
@@ -73,16 +71,16 @@ int main(){
  								//					win.setBorder(false);
 // 													win.setFullScreen(true);
 //													videoPlane.closeMedia();
-													videoPlane.setRefresh(!videoPlane.isRefreshing());	//²¥·Å/ÔÝÍ£
+													videoPlane.setRefresh(!videoPlane.isRefreshing());	//æ’­æ”¾/æš‚åœ
 													break;
 												}
 
 			break;
 
-		case SDL_DROPFILE:		//ÍÏ×§ÎÄ¼þµ½´°¿ÚÄÚ
-			if(videoPlane.isMediaOpened())		//¹Ø±ÕÖ®Ç°´ò¿ªµÄ
+		case SDL_DROPFILE:		//æ‹–æ‹½æ–‡ä»¶åˆ°çª—å£å†…
+			if(videoPlane.isMediaOpened())		//å…³é—­ä¹‹å‰æ‰“å¼€çš„
 				videoPlane.closeMedia();
-			videoPlane.openMedia(event.drop.file);	//´ò¿ªÐÂÎÄ¼þ
+			videoPlane.openMedia(event.drop.file);	//æ‰“å¼€æ–°åª’ä½“
 			break;
 
 		case SDL_WINDOWEVENT:
@@ -93,7 +91,7 @@ int main(){
 
 			break;
 
-		case SDL_QUIT:			//´°¿ÚX
+		case SDL_QUIT:			//çª—å£X
 			goto flag;
 			break;
 
